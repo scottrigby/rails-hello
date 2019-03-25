@@ -30,9 +30,17 @@ N/A
 
 ### K8S
 - Create kind cluster
-- `kubectl run rails-hello --image=r6by/rails-hello:0.1.0 --port 3000`
-- `kubectl port-forward deployment/rails-hello 3000:3000`
-- `curl localhost:3000`
-- Helm chart forthcoming
-
-## ...
+- Initialize Helm (and wait for Tiller to be running in your kind cluster)
+- `helm install --name=my-release helm/rails-hello/ --wait`
+- Follow the terminal instructions
+    For example, if your `service.type` is `ClusterIP`, you will see a pot-forward command to run. Running will display the dynamically allocated port being forwarded to, like:
+    ```console
+    $ kubectl port-forward svc/my-release-rails-hello 0:80
+    Forwarding from 127.0.0.1:56652 -> 3000
+    Forwarding from [::1]:56652 -> 3000
+    ```
+- Test your localhost, for example:
+    ```console
+    $ curl -s 127.0.0.1:56746 | grep Rails!
+    <h1>Hello, Rails!</h1>
+    ```
