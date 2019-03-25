@@ -1,24 +1,38 @@
-# README
+# Rails Hello demo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby version
+2.3.8 (as a project-specific test, for no other good reason in 2019)
 
-Things you may want to cover:
+## System dependencies
+- Docker
+- [kind](https://kind.sigs.k8s.io/)
 
-* Ruby version
+## Configuration
+Currently no config. This runs through step 4 in [Getting Started With Rails](https://guides.rubyonrails.org/getting_started.html).
 
-* System dependencies
+## Database creation
+Currently no database, uses sqlite.
 
-* Configuration
+## Database initialization
+N/A
 
-* Database creation
+## How to run the test suite
+docker run -it --rm r6by/rails-hello:0.1.0 bundle exec rake test
 
-* Database initialization
+## Services (job queues, cache servers, search engines, etc.)
+N/A
 
-* How to run the test suite
+## Deployment instructions
 
-* Services (job queues, cache servers, search engines, etc.)
+### Docker
+- `docker run -itP r6by/rails-hello:0.1.0`
+- `curl localhost:3000`
 
-* Deployment instructions
+### K8S
+- Create kind cluster
+- `kubectl run rails-hello --image=r6by/rails-hello:0.1.0 --port 3000`
+- `kubectl port-forward deployment/rails-hello 3000:3000`
+- `curl localhost:3000`
+- Helm chart forthcoming
 
-* ...
+## ...
