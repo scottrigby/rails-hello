@@ -11,13 +11,15 @@
 Currently no config. This runs through step 4 in [Getting Started With Rails](https://guides.rubyonrails.org/getting_started.html).
 
 ## Database creation
-Currently no database, uses sqlite.
+Currently includes sqlite, but no schema defined yet.
 
 ## Database initialization
 N/A
 
 ## How to run the test suite
-docker run -it --rm r6by/rails-hello:0.1.0 bundle exec rake test
+```console
+$ docker run -it --rm r6by/rails-hello:0.1.0 bundle exec rake test
+```
 
 ## Services (job queues, cache servers, search engines, etc.)
 N/A
